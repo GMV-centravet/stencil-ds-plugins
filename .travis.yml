@@ -1,0 +1,20 @@
+language: node_js
+node_js:
+  - lts/*
+install:
+  - npm ci
+  - npm run bootstrap
+script:
+  - commitlint-travis
+  - lerna run build
+after_success:
+  - git checkout $TRAVIS_BRANCH
+before_deploy:
+  - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> $HOME/.npmrc 2> /dev/null
+deploy:
+  - provider: script
+    script: npx lerna publish from-git --yes
+    skip_cleanup: true
+    keep_history: true
+    on:
+      branch: master

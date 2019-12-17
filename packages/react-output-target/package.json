@@ -1,5 +1,5 @@
 {
-  "name": "@stencil/react-output-target",
+  "name": "@gmvdev/react-output-target",
   "version": "0.0.2",
   "description": "This is an output plugin for stencil.",
   "main": "dist/index.cjs.js",
